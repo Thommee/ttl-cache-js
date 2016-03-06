@@ -1,0 +1,24 @@
+{
+  "name": "ttl-cache-js",
+  "version": "1.0.0",
+  "description": "Cache module with TTL option for Node JS",
+  "main": "cache.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thommee/ttl-cache-js.git"
+  },
+  "keywords": [
+    "cache",
+    "ttl",
+    "node"
+  ],
+  "author": "Tomasz Szuba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thommee/ttl-cache-js/issues"
+  },
+  "homepage": "https://github.com/Thommee/ttl-cache-js#readme"
+}
