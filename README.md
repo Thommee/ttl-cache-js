@@ -42,13 +42,19 @@ Delete value by key. Always return undefined.
     // delete by key:
     cache.del('some-key');
     
-##### size: Cache::size():int
+##### HAS: Cache::has(String: key):boolean
+Return true if key does exist. Otherwise return false.
+    
+    // check if key does exist
+    var result = cache.has('some-key');
+    
+##### SIZE: Cache::size():int
 Return count of stored values.
 
     // get size:
     var size = cache.size();
     
-##### clear: Cache::clear():undefined
+##### CLEAR: Cache::clear():undefined
 Delete all stored keys and values. Always return undefined.
 
     // clear all values: 
