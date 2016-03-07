@@ -4,6 +4,10 @@
 
 ### Get started:
 
+install:
+
+    npm install ttl-cache-js
+
 Import:
 
     var Cache = require('ttl-cache-js');
