@@ -1,6 +1,6 @@
 {
   "name": "ttl-cache-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Cache module with TTL option for Node JS",
   "main": "cache.js",
   "scripts": {
