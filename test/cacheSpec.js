@@ -7,6 +7,11 @@ describe('Cache', function() {
 
         it('', function() {
             assert.equal(0, cache.size());
+            assert.equal(undefined, cache.get('prototype'));
+            cache.set('prototype', '32');
+            assert.equal('32', cache.get('prototype'));
+            cache.del('prototype');
+
         });
 
         it('should return new value when trying to overwitre old value', function () {

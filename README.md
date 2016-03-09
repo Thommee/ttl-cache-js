@@ -1,5 +1,5 @@
 # ttl-cache-js
-#### Cache module with TTL option for Node JS
+#### Cache library with TTL support for Node JS
 
 
 ### Get started:

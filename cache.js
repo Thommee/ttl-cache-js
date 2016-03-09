@@ -23,7 +23,7 @@ module.exports = function() {
     var store = {
         data: {},
         get: function(key) {
-            return this.data.hasOwnProperty(key) ? this.data[key] : undefined;
+            return this.data[key];
         },
         set: function(key, value) {
             this.data[key] = value;
@@ -53,11 +53,8 @@ module.exports = function() {
             ttl > 0 && TTL.set(key, ttl, function() { wrapper.del(key) });
         },
         del: function(key) {
-            store.del(key);
             TTL.del(key);
-        },
-        has: function(key) {
-            return store.has(key);
+            store.del(key);
         },
         clear: function() {
             TTL.clear();
