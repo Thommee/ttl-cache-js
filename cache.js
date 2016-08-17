@@ -22,11 +22,11 @@ module.exports = function() {
 
     var store = {
         data: {},
-        get: function(key) {
-            return this.data[key];
+        get: function(key, defaultValue) {
+            return this.data.hasOwnProperty(key) ? this.data[key] : defaultValue;
         },
         set: function(key, value) {
-            this.data[key] = value;
+            return this.data[key] = value;
         },
         del: function(key) {
             delete this.data[key];
@@ -44,13 +44,14 @@ module.exports = function() {
 
 
     var wrapper = {
-        get: function(key) {
-            return store.get(key)
+        get: function(key, defaultValue) {
+            return store.get(key, defaultValue)
         },
         set: function(key, value, ttl) {
             TTL.del(key);
-            store.set(key, value);
+            var result = store.set(key, value);
             ttl > 0 && TTL.set(key, ttl, function() { wrapper.del(key) });
+            return result;
         },
         del: function(key) {
             TTL.del(key);

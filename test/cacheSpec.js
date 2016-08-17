@@ -14,6 +14,21 @@ describe('Cache', function() {
 
         });
 
+        it('should return setted value', function() {
+            var result1 = cache.set('a1', true);
+            var result2 = cache.set('a2', false);
+            var result3 = cache.set('a3', undefined);
+            var result4 = cache.set('a4', '');
+            var result5 = cache.set('a5', 0);
+            var result6 = cache.set('a6', 'abc');
+            assert.equal(result1, true);
+            assert.equal(result2, false);
+            assert.equal(result3, undefined);
+            assert.equal(result4, '');
+            assert.equal(result5, 0);
+            assert.equal(result6, 'abc');
+        });
+
         it('should return new value when trying to overwitre old value', function () {
             cache.set('key', 'value1'); assert.equal('value1', cache.get('key'));
             cache.set('key', 'value2'); assert.equal('value2', cache.get('key'));
@@ -41,6 +56,14 @@ describe('Cache', function() {
             cache.set('key2', false);
             assert.equal(true, cache.get('key1'));
             assert.equal(false, cache.get('key2'));
+        });
+
+        it('should return default value if key does not exist', function () {
+            assert.equal(true, cache.get('key11', true));
+            assert.equal(false, cache.get('key12', false));
+            assert.equal(undefined, cache.get('key13', undefined));
+            assert.equal('', cache.get('key14', ''));
+            assert.equal(0, cache.get('key15', 0));
         });
 
         it('should remove old ttls when trying to set a new one', function (done) {
@@ -71,7 +94,11 @@ describe('Cache', function() {
         });
 
         it('size is 0 when clear', function () {
-
+            cache.clear();
+            assert.equal(0, cache.size());
+            cache.set('k1', 1);
+            cache.set('k2', 2);
+            cache.set('k2', 3);
             assert.equal(2, cache.size());
             cache.clear();
             assert.equal(0, cache.size());

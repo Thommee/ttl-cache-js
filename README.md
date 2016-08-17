@@ -22,13 +22,14 @@ Init:
     
 ### Api:
 
-##### GET: Cache::get(string: key):mixed|undefined
-Return needed value, or undefined if stored value does not exist
+##### GET: Cache::get(string: key[, mixed defaultValue]):mixed|undefined
+Return needed value, or defaultValue if requested value does not exist or undefined if requested value does not exist and defaultValue is not provided
     
-    var value = cache.get('some-key');
+    var value1 = cache.get('some-key');
+    var value2 = cache.get('some-key', 'default value');
     
-##### SET: Cache::set(string: key, mixed: value [, int ttl]):undefined
-Set value with optional ttl param. Always return undefined.
+##### SET: Cache::set(string: key, mixed: value [, int ttl]):mixed
+Set value with optional ttl param. Return setted value.
     
     // set value with infinite ttl:
     cache.set('someKey', 'someValue'); 
