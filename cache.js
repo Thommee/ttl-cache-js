@@ -63,6 +63,9 @@ module.exports = function() {
         },
         size: function() {
             return store.size();
+        },
+        has: function(key) {
+            return store.has(key);
         }
     };
 

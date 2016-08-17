@@ -3,7 +3,7 @@ var Cache = require('../../ttl-cache-js');
 var cache = Cache();
 
 describe('Cache', function() {
-    describe('"set", "get"', function () {
+    describe('"set", "get", "has"', function () {
 
         it('', function() {
             assert.equal(0, cache.size());
@@ -80,6 +80,22 @@ describe('Cache', function() {
                 assert.equal(undefined, cache.get('key'));
                 done();
             }, 200);
+        });
+        
+        it('should return bool if "has" was called', function() {
+            cache.set('a1', true);
+            cache.set('a2', false);
+            cache.set('a3', undefined);
+            cache.set('a4', '');
+            cache.set('a5', 0);
+            cache.set('a6', 'abc');
+            assert.equal(cache.has('a0'), false);
+            assert.equal(cache.has('a1'), true);
+            assert.equal(cache.has('a2'), true);
+            assert.equal(cache.has('a3'), true);
+            assert.equal(cache.has('a4'), true);
+            assert.equal(cache.has('a5'), true);
+            assert.equal(cache.has('a6'), true);
         });
     });
 
